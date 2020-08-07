@@ -12,8 +12,8 @@ type Fetcher interface {
 }
 
 type fetcher struct {
-	body   []byte
-	status int
+	Body   []byte
+	Status int
 }
 
 // Fetch get response from URL(or API) and return it as JSON.
@@ -24,9 +24,9 @@ func (f *fetcher) fetch(url ...interface{}) (*fetcher, error) {
 	}
 	defer resp.Body.Close()
 
-	f.status = resp.StatusCode
+	f.Status = resp.StatusCode
 	respBody, _ := ioutil.ReadAll(resp.Body)
-	f.body = respBody
+	f.Body = respBody
 	return f, nil
 }
 
