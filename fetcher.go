@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// Fetcher API取得に関する動作のパッケージ
+// Fetcher The package for get API response
 type Fetcher interface {
 	Fetch(...interface{})
 }
