@@ -11,27 +11,27 @@ type Fetcher interface {
 	Fetch(...interface{})
 }
 
-type fetcher struct {
-	body   []byte
-	status int
+type response struct {
+	Body   []byte
+	Status int
 }
 
 // Fetch get response from URL(or API) and return it as JSON.
-func (f *fetcher) fetch(url ...interface{}) (*fetcher, error) {
+func (r *response) fetch(url ...interface{}) (*response, error) {
 	resp, err := http.Get(fmt.Sprint(url...))
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
 
-	f.status = resp.StatusCode
+	r.Status = resp.StatusCode
 	respBody, _ := ioutil.ReadAll(resp.Body)
-	f.body = respBody
-	return f, nil
+	r.Body = respBody
+	return r, nil
 }
 
 // Fetch Initialize fetcher
-func Fetch(u string) (*fetcher, error) {
-	f := fetcher{}
-	return f.fetch(u)
+func Fetch(u string) (*response, error) {
+	r := response{}
+	return r.fetch(u)
 }

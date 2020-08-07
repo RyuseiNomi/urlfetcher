@@ -19,18 +19,18 @@ package main
 
 import github.com/RyuseiNomi/urlfetcher
 
-func fetchAPI() {
+func main() {
 	fetcher, err := urlfetcher.Fetch(apiSampleUrl)
 	if err != nil {
 		t.Errorf("Unexpected Error : %s", err)
 	}
-	if fetcher.status != 200 {
-		t.Errorf("Status Error : Got response %v", fetcher.status)
+	if fetcher.Status != 200 {
+		t.Errorf("Status Error : Got response %v", fetcher.Status)
 	}
-	if fetcher.body == nil {
+	if fetcher.Body == nil {
 		t.Errorf("Failed to assert : Response body is nil.")
     }
     
-    fmt.Printf("result %v:", fetcher.body)
+    fmt.Printf("result %v:", fetcher.Body)
 }
 ```
