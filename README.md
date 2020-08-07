@@ -17,20 +17,24 @@ In your code, import the package and use `Fetch()` method like this.
 ```go:sample.go
 package main
 
-import github.com/RyuseiNomi/urlfetcher
+import (
+	"log"
+
+	"github.com/RyuseiNomi/urlfetcher"
+)
 
 func main() {
 	fetcher, err := urlfetcher.Fetch(apiSampleUrl)
 	if err != nil {
-		t.Errorf("Unexpected Error : %s", err)
+		log.Fatal("Unexpected Error : %s", err)
 	}
 	if fetcher.Status != 200 {
-		t.Errorf("Status Error : Got response %v", fetcher.Status)
+		log.Fatal("Status Error : Got response %v", fetcher.Status)
 	}
 	if fetcher.Body == nil {
-		t.Errorf("Failed to assert : Response body is nil.")
+		log.Fatal("Failed to assert : Response body is nil.")
     }
     
-    fmt.Printf("result %v:", fetcher.Body)
+    log.Printf("result %v:", fetcher.Body)
 }
 ```
