@@ -8,7 +8,7 @@ var (
 	apiSampleUrl = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=1000000"
 )
 
-func TestNew(t *testing.T) {
+func TestFetch(t *testing.T) {
 	fetcher, err := Fetch(apiSampleUrl)
 	if err != nil {
 		t.Errorf("Unexpected Error : %s", err)
